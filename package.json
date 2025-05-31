@@ -2,6 +2,7 @@
   "name": "youmed-app-backend",
   "description": "Backend API for Youmed mobile app",
   "version": "1.0.0",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
