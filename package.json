@@ -1,0 +1,34 @@
+{
+  "name": "youmed-app-backend",
+  "description": "Backend API for Youmed mobile app",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangkhadev/youmed-app-backend.git"
+  },
+  "author": {
+    "name": "Tran Hoang Kha",
+    "email": "hoangkhadev@gmail.com",
+    "url": "https://github.com/hoangkhadev"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoangkhadev/youmed-app-backend/issues"
+  },
+  "homepage": "https://github.com/hoangkhadev/youmed-app-backend#readme",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "16.5.0",
+    "express": "5.0.1",
+    "mongoose": "8.15.1",
+    "socket.io": "4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.10"
+  }
+}
