@@ -6,7 +6,13 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "seed:all": "node src/seeds/index.js",
+    "seed:users": "node src/seeds/user.seed.js",
+    "seed:clinics": "node src/seeds/clinic.seed.js",
+    "seed:specialties": "node src/seeds/specialty.seed.js",
+    "seed:doctors": "node src/seeds/doctor.seed.js",
+    "seed:schedules": "node src/seeds/schedule.seed.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +29,7 @@
   },
   "homepage": "https://github.com/hoangkhadev/youmed-app-backend#readme",
   "dependencies": {
+    "bcryptjs": "3.0.2",
     "cors": "2.8.5",
     "dotenv": "16.5.0",
     "express": "5.0.1",
