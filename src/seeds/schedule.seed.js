@@ -23,44 +23,44 @@ const totalSlotsForDay = morningSlots.length + afternoonSlots.length;
 
 const dates = [
   {
-    start: 1,
-    end: 16,
+    start: 13,
+    end: 30,
   },
   {
-    start: 2,
-    end: 10,
+    start: 13,
+    end: 30,
   },
   {
-    start: 1,
-    end: 8,
+    start: 13,
+    end: 25,
   },
   {
-    start: 1,
-    end: 16,
+    start: 13,
+    end: 28,
   },
   {
-    start: 2,
-    end: 14,
+    start: 13,
+    end: 20,
   },
   {
-    start: 1,
-    end: 4,
+    start: 13,
+    end: 25,
   },
   {
-    start: 1,
-    end: 15,
+    start: 13,
+    end: 18,
   },
   {
-    start: 2,
-    end: 8,
+    start: 13,
+    end: 20,
   },
   {
-    start: 1,
-    end: 10,
+    start: 13,
+    end: 23,
   },
   {
-    start: 2,
-    end: 9,
+    start: 13,
+    end: 25,
   },
 ];
 
@@ -81,10 +81,10 @@ async function seedSchedule() {
 
       const schedules = [];
       doctors.forEach((doctor, index) => {
-        const range = dates[index % dates.length];
+        const range = dates[index];
 
         for (let day = range.start; day <= range.end; day++) {
-          const date = new Date(2025, 6, day);
+          const date = new Date(`2025-06-${day}`);
 
           schedules.push({
             doctor: doctor?._id,

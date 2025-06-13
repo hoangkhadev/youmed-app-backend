@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema(
   {
     full_name: {
       type: String,
-      required: true,
       trim: true,
     },
     phone: {
@@ -15,14 +15,13 @@ const userSchema = mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
       lowercase: true,
       trim: true,
     },
     password: {
       type: String,
       required: true,
+      select: false,
     },
     role: {
       type: String,
@@ -31,27 +30,22 @@ const userSchema = mongoose.Schema(
     },
     gender: {
       type: String,
-      required: true,
       enum: ["male", "female"],
     },
     date_of_birth: {
       type: Date,
-      required: true,
     },
     address: {
       city: {
         type: String,
-        required: true,
         trim: true,
       },
       district: {
         type: String,
-        required: true,
         trim: true,
       },
       ward: {
         type: String,
-        required: true,
         trim: true,
       },
       address2: {
@@ -62,6 +56,25 @@ const userSchema = mongoose.Schema(
   },
   {
     timestamps: true,
+  }
+);
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+userSchema.index(
+  { email: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { email: { $exists: true, $ne: null } },
   }
 );
 

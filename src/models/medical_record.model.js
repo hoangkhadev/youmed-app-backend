@@ -19,11 +19,9 @@ const medicalRecordSchema = mongoose.Schema(
     },
     symptoms: {
       type: String,
-      required: true,
     },
     diagnosis: {
       type: String,
-      required: true,
     },
   },
   {

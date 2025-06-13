@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const doctorShema = mongoose.Schema(
+const doctorSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -47,5 +47,14 @@ const doctorShema = mongoose.Schema(
   }
 );
 
-const Doctor = mongoose.model("Doctor", doctorShema);
+doctorSchema.virtual("schedules", {
+  ref: "Schedule",
+  localField: "_id",
+  foreignField: "doctor",
+});
+
+doctorSchema.set("toObject", { virtuals: true });
+doctorSchema.set("toJSON", { virtuals: true });
+
+const Doctor = mongoose.model("Doctor", doctorSchema);
 export default Doctor;

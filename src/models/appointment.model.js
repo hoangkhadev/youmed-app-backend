@@ -18,10 +18,10 @@ const appointmentSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "comfirmed", "cancelled", "done"],
+      enum: ["pending", "confirmed", "cancelled", "done"],
       default: "pending",
     },
-    reson: {
+    reason: {
       type: String,
       required: true,
     },
@@ -39,6 +39,10 @@ const appointmentSchema = mongoose.Schema(
         type: String,
         required: true,
       },
+    },
+    appointment_number: {
+      type: Number,
+      required: true,
     },
   },
   {
