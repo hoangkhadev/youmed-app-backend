@@ -5,12 +5,43 @@ import Doctor from "../models/doctor.model.js";
 
 export const getDoctors = async (req, res) => {
   const limit = parseInt(req.query.limit) || 10;
+  const search = req.query.q?.trim() || "";
   try {
-    const doctors = await Doctor.find()
-      .limit(limit)
-      .populate("user")
-      .populate("specializations")
-      .populate("schedules");
+    const doctors = await Doctor.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      { $unwind: "$user" },
+
+      {
+        $lookup: {
+          from: "specialties",
+          localField: "specializations",
+          foreignField: "_id",
+          as: "specializations",
+        },
+      },
+
+      ...(search
+        ? [
+            {
+              $match: {
+                $or: [
+                  { "user.full_name": { $regex: search, $options: "i" } },
+                  { "specializations.name": { $regex: search, $options: "i" } },
+                ],
+              },
+            },
+          ]
+        : []),
+
+      { $limit: limit },
+    ]);
 
     return res.status(200).json(doctors);
   } catch (err) {

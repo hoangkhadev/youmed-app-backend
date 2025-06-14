@@ -23,43 +23,43 @@ const totalSlotsForDay = morningSlots.length + afternoonSlots.length;
 
 const dates = [
   {
-    start: 13,
+    start: 14,
     end: 30,
   },
   {
-    start: 13,
+    start: 14,
     end: 30,
   },
   {
-    start: 13,
+    start: 14,
     end: 25,
   },
   {
-    start: 13,
+    start: 14,
     end: 28,
   },
   {
-    start: 13,
+    start: 14,
     end: 20,
   },
   {
-    start: 13,
+    start: 14,
     end: 25,
   },
   {
-    start: 13,
+    start: 14,
     end: 18,
   },
   {
-    start: 13,
+    start: 14,
     end: 20,
   },
   {
-    start: 13,
+    start: 14,
     end: 23,
   },
   {
-    start: 13,
+    start: 14,
     end: 25,
   },
 ];
